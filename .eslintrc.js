@@ -1,5 +1,3 @@
-const defaultRestrictedImportPatterns = ['*../**'];
-
 module.exports = {
 	root: true,
 	parser: '@typescript-eslint/parser',
@@ -29,12 +27,6 @@ module.exports = {
 		'no-debugger': 'error',
 		'no-dupe-keys': 'error',
 		'no-eval': 'error',
-		'no-restricted-imports': [
-			'error',
-			{
-				patterns: defaultRestrictedImportPatterns,
-			},
-		],
 		'no-restricted-syntax': ['error', 'TSEnumDeclaration'],
 		'padding-line-between-statements': [
 			'error',
@@ -63,6 +55,7 @@ module.exports = {
 			},
 		],
 		'react/display-name': 'off',
+		'react/react-in-jsx-scope': 'off',
 		'unused-imports/no-unused-imports': 'error',
 	},
 	overrides: [
