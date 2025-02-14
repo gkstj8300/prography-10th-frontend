@@ -1,46 +1,90 @@
-# Getting Started with Create React App
+# Prography 10th Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## 📦 기술 스택
 
-In the project directory, you can run:
+- **프레임워크 & 라이브러리**
+  - React `18.2.0`
+  - Styled-components
+- **개발 환경**
+  - TypeScript
+  - ESLint
+  - Prettier
+  - React Scripts
+  - Axios
+---
 
-### `npm start`
+## 🚀 프로젝트 실행 방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1️⃣ **프로젝트 클론**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+git clone https://github.com/gkstj8300/prography-10th-frontend.git
+cd prography-10th-frontend
+```
 
-### `npm test`
+### 2️⃣ **패키지 설치**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm install
+```
 
-### `npm run build`
+### 3️⃣ **개발 서버 실행**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `http://localhost:3000`에서 실행됩니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4️⃣ **프로덕션 빌드**
 
-### `npm run eject`
+```sh
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 최적화된 빌드 파일이 `build/` 폴더에 생성됩니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5️⃣ **ESLint & Prettier 적용**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+npm run lint
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `ESLint`와 `Prettier`를 실행하여 코드 스타일을 자동 정리합니다.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📂 프로젝트 구조
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+prography-10th-frontend/
+│── src/
+│   ├── components/    # 재사용 가능한 UI 컴포넌트
+│   ├── pages/         # 페이지 단위 컴포넌트
+│   ├── hooks/         # 커스텀 훅
+│   ├── utils/         # 유틸리티 함수
+│   ├── styles/        # 전역 스타일 관리
+│   ├── App.tsx        # 메인 컴포넌트
+│   ├── index.tsx      # React 렌더링 진입점
+│
+│── public/            # 정적 파일 (favicon, index.html 등)
+│── .eslintrc.json     # ESLint 설정 파일
+│── .prettierrc.js     # Prettier 설정 파일
+│── package.json       # 프로젝트 의존성 및 스크립트
+│── README.md          # 프로젝트 문서
+```
+
+## :computer: 커밋 메세지 컨벤션
+
+```
+- Allowed <type>
+- feat (feature)
+- fix (bug fix)
+- docs (documentation)
+- style (formatting, missing semi colons, …)
+- refactor
+- test (when adding missing tests)
+- chore (maintain)
+```
