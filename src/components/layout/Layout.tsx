@@ -1,11 +1,14 @@
 import { Header } from './header';
 import styled from 'styled-components';
+import { Outlet } from 'react-router-dom';
 
 export const Layout: React.FC = () => {
 	return (
 		<>
 			<Header />
-			<LayoutContainer />
+			<LayoutContainer>
+				<Outlet />
+			</LayoutContainer>
 		</>
 	);
 };
