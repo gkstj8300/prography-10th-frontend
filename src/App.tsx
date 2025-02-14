@@ -1,11 +1,9 @@
 import React from 'react';
+import Router from './routes/Router';
+import './styles/globals.css';
 
 const App: React.FC = () => {
-	return (
-		<div>
-			<h1>Hello, Prography 10th Frontend!</h1>
-		</div>
-	);
+	return <Router />;
 };
 
 export default App;
