@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
 Header.displayName = 'Header';
 
 const HeaderContainer = styled.div`
-	position: sticky;
+	position: absolute;
 	top: 0;
 	z-index: 30;
 	box-shadow: rgb(0 0 0 / 0.08) 0 0 8px;
