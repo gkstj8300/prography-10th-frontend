@@ -10,8 +10,8 @@ export const Header: React.FC = () => {
 				<Logo>
 					{location.pathname === '/' ? (
 						<LogoImage />
-					): (
-						<Link to='/'>
+					) : (
+						<Link to="/">
 							<LogoImage />
 						</Link>
 					)}
@@ -33,11 +33,11 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderInner = styled.div`
-    margin: 8px 10px;
-    width: calc(100% - 16px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	margin: 8px 10px;
+	width: calc(100% - 16px);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 `;
 
 const Logo = styled.span`
@@ -46,9 +46,9 @@ const Logo = styled.span`
 
 const LogoImage = styled.img.attrs({
 	src: 'prography.png',
-	alt: 'prography-logo'
+	alt: 'prography-logo',
 })`
 	display: block;
 	width: 92px;
-    height: 32px;
+	height: 32px;
 `;
