@@ -21,7 +21,9 @@ Layout.displayName = 'Layout';
 const LayoutContainer = styled.div<{ $pathIsHome: boolean }>`
 	width: 100%;
 	margin: 0 auto;
-	${({ $pathIsHome }) => $pathIsHome && `
+	${({ $pathIsHome }) =>
+		$pathIsHome &&
+		`
 		max-width: 1120px;
 		padding: 1rem;
 	`}

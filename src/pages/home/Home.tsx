@@ -4,13 +4,28 @@ import { Link } from 'react-router-dom';
 import { ScrollAnimationContainer } from '../../components/ui/animations/ScrollAnimationContainer';
 
 export const Home: React.FC = () => {
-	const part = useMemo(() => [
-		'Product Owner', 'Design', 'IOS', 'AOS', 'Frontend(React)', 'Backend(Spring)'
-	], []);	  
-	const partColors = useMemo(() => [
-		'rgb(247 27 27)', 'rgb(247 157 50)', 'rgb(208 212 52)',
-		'rgb(74 239 39)', 'rgb(34 222 241)', 'rgb(39 118 248)'
-	], []);
+	const part = useMemo(
+		() => [
+			'Product Owner',
+			'Design',
+			'IOS',
+			'AOS',
+			'Frontend(React)',
+			'Backend(Spring)',
+		],
+		[]
+	);
+	const partColors = useMemo(
+		() => [
+			'rgb(247 27 27)',
+			'rgb(247 157 50)',
+			'rgb(208 212 52)',
+			'rgb(74 239 39)',
+			'rgb(34 222 241)',
+			'rgb(39 118 248)',
+		],
+		[]
+	);
 
 	return (
 		<HomeContainer>
@@ -18,7 +33,8 @@ export const Home: React.FC = () => {
 				<FirstSection>
 					<h2>안녕하세요.</h2>
 					<h2>
-						새로운 가치를 만들어가는 IT커뮤니티, <Strong color="#f22351">Prography</Strong> 입니다.
+						새로운 가치를 만들어가는 IT커뮤니티,{' '}
+						<Strong color="#f22351">Prography</Strong> 입니다.
 					</h2>
 				</FirstSection>
 			</ScrollAnimationContainer>
@@ -26,11 +42,14 @@ export const Home: React.FC = () => {
 			<ScrollAnimationContainer>
 				<SecondSection>
 					<h2>
-						드디어 Prography <Strong color="#0f31f7">10기</Strong> 모집이 시작되었습니다.
+						드디어 Prography <Strong color="#0f31f7">10기</Strong> 모집이
+						시작되었습니다.
 					</h2>
 					<Part>
 						{part.map((part, index) => (
-							<h3 key={part} style={{ backgroundColor: partColors[index] }}>{part}</h3>
+							<h3 key={part} style={{ backgroundColor: partColors[index] }}>
+								{part}
+							</h3>
 						))}
 					</Part>
 					<h3>총 6개의 파트를 모집합니다.</h3>
@@ -58,17 +77,17 @@ export const Home: React.FC = () => {
 						<IsLeft>
 							<Link to={'#'}>
 								<span>프로그라피 10기 모집 자세히 알아보기</span>
-								<StyledImage imageUrl='https://prography.org/assets/images/culture-img-2.png'/>
+								<StyledImage imageUrl="https://prography.org/assets/images/culture-img-2.png" />
 							</Link>
 						</IsLeft>
 						<IsRight>
 							<Link to={'#'}>
 								<span>공식 홈페이지</span>
-								<StyledImage imageUrl='https://prography.org/assets/images/culture-img-1.png'/>
+								<StyledImage imageUrl="https://prography.org/assets/images/culture-img-1.png" />
 							</Link>
 							<Link to={'#'}>
 								<span>인스타그램</span>
-								<StyledImage imageUrl='https://prography.org/assets/images/culture-img-3.png'/>
+								<StyledImage imageUrl="https://prography.org/assets/images/culture-img-3.png" />
 							</Link>
 						</IsRight>
 					</LinkWrap>
@@ -150,15 +169,13 @@ const ThirdSection = styled.section`
 	}
 `;
 
-const FourthSection = styled.section`
-
-`;
+const FourthSection = styled.section``;
 
 const LinkWrap = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 48px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 48px;
 
 	a {
 		display: flex;
@@ -176,14 +193,14 @@ const LinkWrap = styled.div`
 	}
 
 	span {
-	    flex: 1;
-    	text-align: center;
+		flex: 1;
+		text-align: center;
 	}
 
 	image {
 		text-align: right;
 	}
-	
+
 	@media (max-width: 768px) {
 		flex-direction: column;
 	}
@@ -191,26 +208,26 @@ const LinkWrap = styled.div`
 
 const IsLeft = styled.div`
 	width: 50%;
-    padding-right: 12px;
+	padding-right: 12px;
 
 	@media (max-width: 768px) {
 		width: 100%;
 		padding-right: 0;
-	}	
+	}
 `;
 
 const IsRight = styled.div`
 	display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 50%;
-    padding-left: 12px;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 50%;
+	padding-left: 12px;
 
 	@media (max-width: 768px) {
 		width: 100%;
 		padding-right: 0;
-	}		
+	}
 `;
 
 const StyledImage = styled.div<{ imageUrl: string }>`
@@ -232,15 +249,15 @@ const supportAnimation = keyframes`
 `;
 
 const SupportIn = styled.div`
-    position: fixed;
-    bottom: 3rem;
-    right: 2rem;
-    z-index: 5;
-    opacity: 0.9;
-    animation: ${supportAnimation} 1.2s ease infinite alternate;
+	position: fixed;
+	bottom: 3rem;
+	right: 2rem;
+	z-index: 5;
+	opacity: 0.9;
+	animation: ${supportAnimation} 1.2s ease infinite alternate;
 
 	a {
-	    display: flex;
+		display: flex;
 		align-items: center;
 	}
 

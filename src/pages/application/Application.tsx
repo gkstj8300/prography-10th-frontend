@@ -1,26 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { Application } from 'src/components/pages/Application';
 
 const ApplicationPage: React.FC = () => {
-    const [notFound, setNotFound] = useState(false);
+	const [notFound, setNotFound] = useState(false);
 
-    const load = useCallback(async () => {
-        setNotFound(false);
-        
-        // 필요한 데이터 로직 삽입
+	const load = useCallback(async () => {
+		setNotFound(false);
 
-    },[]);
+		// 필요한 데이터 로직 삽입
+	}, []);
 
-    useEffect(() => {
-        load();
-    }, []);
+	useEffect(() => {
+		load();
+	}, []);
 
-    if (notFound) {
-        return <div>Not Found</div>
-    }
+	if (notFound) {
+		return <div>Not Found</div>;
+	}
 
-    return <Application />
+	return <Application />;
 };
 ApplicationPage.displayName = 'ApplicationPage';
 
