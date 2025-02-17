@@ -6,6 +6,7 @@ import { ConsentStatus, ApplicationField } from 'src/pages/application';
 import { StepButtonType } from '../Application.hook';
 import { useMemo } from 'react';
 import { TextInput } from 'src/components/ui/inputs';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type Props = {
 	step: number;
@@ -60,83 +61,108 @@ export const StepForm: React.FC<Props> = ({
 
 	return (
 		<StepFormContainer>
-			{step === 1 && (
-				<StepSection>
-					<Title>개인정보 수집 동의</Title>
-					<StepContent>
-						<h4>수집 목적: Prography 10기 리쿠르팅 과정 및 결과 안내</h4>
-						<h4>수집 항목: 이름, 이메일, 핸드폰번호, 학교 정보 및 직장 정보</h4>
-						<h4>보유 및 이용 기간: 리쿠르팅 과정 종료일(3월 7일) 이후 파기</h4>
-					</StepContent>
-					<SubTitle>개인정보 수집 여부 동의 여부를 체크해주세요.</SubTitle>
-					<CheckboxWrapper>
-						<Checkbox
-							onClick={() => handleClick('agree')}
-							isCheck={applicationData.consentAgreed === 'agree'}
-						>
-							개인정보 수집 여부에 동의합니다.
-						</Checkbox>
-						<Checkbox
-							onClick={() => handleClick('disAgree')}
-							isCheck={applicationData.consentAgreed === 'disAgree'}
-						>
-							개인정보 수집 여부에 동의하지 않습니다.
-						</Checkbox>
-					</CheckboxWrapper>
-				</StepSection>
-			)}
-			{step === 2 && (
-				<StepSection>
-					<Title>기본 정보</Title>
-					<SubTitle>연락 가능한 정보를 입력해주세요</SubTitle>
-					<TextInput
-						title="성함"
-						placeholder="성함을 입력해주세요"
-						type="text"
-						name="name"
-						isRequired
-						value={applicationData.name}
-						onChange={handleInputChange}
-					/>
-					<TextInput
-						title="이메일 주소"
-						placeholder="예시: prography@gmail.com"
-						type="email"
-						name="email"
-						isRequired
-						value={applicationData.email}
-						onChange={handleInputChange}
-					/>
-					<TextInput
-						title="휴대폰 번호"
-						placeholder="예시: 010-1234-5678"
-						type="text"
-						name="phoneNumber"
-						isRequired
-						value={applicationData.phoneNumber}
-						onChange={handleInputChange}
-					/>
-				</StepSection>
-			)}
-			{step === 3 && (
-				<StepSection>
-					<Title>지원 정보</Title>
-					<SubTitle>
-						지원하고자 하는 분야를 선택해주세요 <RequiredValue>*</RequiredValue>
-					</SubTitle>
-					<CheckboxWrapper>
-						{applicationFields.map(field => (
+			<AnimatePresence mode="wait">
+				{step === 1 && (
+					<StepSection
+						key="step1"
+						initial={{ opacity: 0, x: -50 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: 50 }}
+						transition={{ duration: 0.3 }}
+					>
+						<Title>개인정보 수집 동의</Title>
+						<StepContent>
+							<h4>수집 목적: Prography 10기 리쿠르팅 과정 및 결과 안내</h4>
+							<h4>
+								수집 항목: 이름, 이메일, 핸드폰번호, 학교 정보 및 직장 정보
+							</h4>
+							<h4>
+								보유 및 이용 기간: 리쿠르팅 과정 종료일(3월 7일) 이후 파기
+							</h4>
+						</StepContent>
+						<SubTitle>개인정보 수집 여부 동의 여부를 체크해주세요.</SubTitle>
+						<CheckboxWrapper>
 							<Checkbox
-								key={field}
-								onClick={() => handleCheckApplicationField(field)}
-								isCheck={applicationData.applicationField === field}
+								onClick={() => handleClick('agree')}
+								isCheck={applicationData.consentAgreed === 'agree'}
 							>
-								{field}
+								개인정보 수집 여부에 동의합니다.
 							</Checkbox>
-						))}
-					</CheckboxWrapper>
-				</StepSection>
-			)}
+							<Checkbox
+								onClick={() => handleClick('disAgree')}
+								isCheck={applicationData.consentAgreed === 'disAgree'}
+							>
+								개인정보 수집 여부에 동의하지 않습니다.
+							</Checkbox>
+						</CheckboxWrapper>
+					</StepSection>
+				)}
+				{step === 2 && (
+					<StepSection
+						key="step2"
+						initial={{ opacity: 0, x: -50 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: 50 }}
+						transition={{ duration: 0.3 }}
+					>
+						<Title>기본 정보</Title>
+						<SubTitle>연락 가능한 정보를 입력해주세요</SubTitle>
+						<TextInput
+							title="성함"
+							placeholder="성함을 입력해주세요"
+							type="text"
+							name="name"
+							isRequired
+							value={applicationData.name}
+							onChange={handleInputChange}
+						/>
+						<TextInput
+							title="이메일 주소"
+							placeholder="예시: prography@gmail.com"
+							type="email"
+							name="email"
+							isRequired
+							value={applicationData.email}
+							onChange={handleInputChange}
+						/>
+						<TextInput
+							title="휴대폰 번호"
+							placeholder="예시: 010-1234-5678"
+							type="text"
+							name="phoneNumber"
+							isRequired
+							value={applicationData.phoneNumber}
+							onChange={handleInputChange}
+						/>
+					</StepSection>
+				)}
+				{step === 3 && (
+					<StepSection
+						key="step3"
+						initial={{ opacity: 0, x: -50 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: 50 }}
+						transition={{ duration: 0.3 }}
+					>
+						<Title>지원 정보</Title>
+						<SubTitle>
+							지원하고자 하는 분야를 선택해주세요{' '}
+							<RequiredValue>*</RequiredValue>
+						</SubTitle>
+						<CheckboxWrapper>
+							{applicationFields.map(field => (
+								<Checkbox
+									key={field}
+									onClick={() => handleCheckApplicationField(field)}
+									isCheck={applicationData.applicationField === field}
+								>
+									{field}
+								</Checkbox>
+							))}
+						</CheckboxWrapper>
+					</StepSection>
+				)}
+			</AnimatePresence>
 			<ButtonWrapper>
 				<Button
 					theme="prev"
@@ -169,7 +195,7 @@ const StepFormContainer = styled.form`
 	display: block;
 `;
 
-const StepSection = styled.div`
+const StepSection = styled(motion.div)`
 	margin-bottom: 2rem;
 `;
 
