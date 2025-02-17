@@ -75,7 +75,7 @@ export const Home: React.FC = () => {
 				</FourthSection>
 			</ScrollAnimationContainer>
 			<SupportIn>
-				<Link to={'#'}>
+				<Link to={'/application'}>
 					<div>지원하기</div>
 					<i></i>
 				</Link>

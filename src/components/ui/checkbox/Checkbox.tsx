@@ -37,5 +37,4 @@ const CheckboxContainer = styled.div`
     cursor: pointer;
     border: 1px solid #fff;
     border-radius: 5px;
-    max-width: 30rem;
 `;
