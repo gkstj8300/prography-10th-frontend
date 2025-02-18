@@ -5,9 +5,10 @@ import {
 	TbCircleNumber2,
 	TbCircleNumber3,
 } from 'react-icons/tb';
+import { StepType } from '../Application.hook';
 
 type Props = {
-	step: number;
+	step: StepType;
 	stepsTitle: string[];
 };
 
@@ -18,7 +19,7 @@ export const StepItem: React.FC<Props> = ({ step, stepsTitle }) => {
 				const checkIndex = index + 1;
 				return (
 					<Item key={index}>
-						{checkIndex < step ? (
+						{checkIndex < Number(step) ? (
 							<MdOutlineCheckBox />
 						) : (
 							<>

@@ -3,10 +3,11 @@ import { useCallback } from 'react';
 import { ApplicationType } from 'src/pages/application';
 import { ConsentStatus, ApplicationField } from 'src/pages/application';
 
+export type StepType = number | 'submit';
 export type StepButtonType = 'prev' | 'next';
 
 export const useApplication = () => {
-	const [step, setStep] = useState<number>(1);
+	const [step, setStep] = useState<StepType>(1);
 	const [applicationData, setApplicationData] = useState<ApplicationType>({
 		consentAgreed: null,
 		name: '',
@@ -29,17 +30,23 @@ export const useApplication = () => {
 
 	const handleStepClick = useCallback(
 		(type: StepButtonType) => {
-			if (
-				applicationData.consentAgreed === null ||
-				applicationData.consentAgreed === 'disAgree'
-			) {
+			const { consentAgreed, name, email, phoneNumber } = applicationData;
+
+			const isStepOneInvalid =
+				step === 1 && (consentAgreed === null || consentAgreed === 'disAgree');
+			const isStepTwoInvalid = step === 2 && (!name || !email || !phoneNumber);
+
+			if (isStepOneInvalid) {
 				alert('개인정보수집 동의를 체크해야만 다음으로 갈 수 있습니다.');
 				return;
 			}
 
-			setStep(prev => {
-				return type === 'next' ? prev + 1 : prev - 1;
-			});
+			if (isStepTwoInvalid) {
+				alert('필수 값을 입력하셔야 합니다.');
+				return;
+			}
+
+			setStep(prev => (type === 'next' ? Number(prev) + 1 : Number(prev) - 1));
 		},
 		[applicationData]
 	);
@@ -66,8 +73,13 @@ export const useApplication = () => {
 		[]
 	);
 
-	const handleSubmit = useCallback((event: React.FormEvent) => {
+	const handleSubmit = useCallback(async (event: React.FormEvent) => {
 		event.preventDefault();
+		// 임시 api 통신을 위한 주석처리
+		// await applicationSubmit(applicationData);
+
+		// 완료 페이지 혹은 step 데이터를 통한 완료 화면 출력을 위한 submit set
+		setStep('submit');
 	}, []);
 
 	// 휴대폰 번호 하이픈 자동완성
