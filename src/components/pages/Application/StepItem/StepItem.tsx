@@ -22,9 +22,15 @@ export const StepItem: React.FC<Props> = ({ step, stepsTitle }) => {
 							<MdOutlineCheckBox />
 						) : (
 							<>
-								{checkIndex === 1 && <TbCircleNumber1 />}
-								{checkIndex === 2 && <TbCircleNumber2 />}
-								{checkIndex === 3 && <TbCircleNumber3 />}
+								{checkIndex === 1 && (
+									<TbCircleNumber1 aria-selected={checkIndex === step} />
+								)}
+								{checkIndex === 2 && (
+									<TbCircleNumber2 aria-selected={checkIndex === step} />
+								)}
+								{checkIndex === 3 && (
+									<TbCircleNumber3 aria-selected={checkIndex === step} />
+								)}
 							</>
 						)}
 						{title}
@@ -52,5 +58,10 @@ const Item = styled.div`
 	svg {
 		width: 1.5rem;
 		height: 1.5rem;
+	}
+
+	svg[aria-selected='true'] {
+		background-color: #fb205e;
+		border-radius: 10px;
 	}
 `;
