@@ -4,12 +4,12 @@ import type { ConsentStatus } from 'src/pages/application';
 
 type Props = {
 	consentAgreed: ConsentStatus;
-	handleClick: (option: ConsentStatus) => void;
+	handleClickAgreement: (option: ConsentStatus) => void;
 };
 
 export const ConsentAgreementStep: React.FC<Props> = ({
 	consentAgreed,
-	handleClick,
+	handleClickAgreement,
 }) => {
 	return (
 		<div>
@@ -22,13 +22,13 @@ export const ConsentAgreementStep: React.FC<Props> = ({
 			<SubTitle>개인정보 수집 여부 동의 여부를 체크해주세요.</SubTitle>
 			<CheckboxWrapper>
 				<Checkbox
-					onClick={() => handleClick('agree')}
+					onClick={() => handleClickAgreement('agree')}
 					isCheck={consentAgreed === 'agree'}
 				>
 					개인정보 수집 여부에 동의합니다.
 				</Checkbox>
 				<Checkbox
-					onClick={() => handleClick('disAgree')}
+					onClick={() => handleClickAgreement('disAgree')}
 					isCheck={consentAgreed === 'disAgree'}
 				>
 					개인정보 수집 여부에 동의하지 않습니다.

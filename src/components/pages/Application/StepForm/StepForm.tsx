@@ -12,7 +12,7 @@ import { SubmissionCompleteStep } from '../SubmissionCompleteStep';
 type Props = {
 	step: StepType;
 	applicationData: ApplicationType;
-	handleClick: (option: ConsentStatus) => void;
+	handleClickAgreement: (option: ConsentStatus) => void;
 	handleStepClick: (type: StepButtonType) => void;
 	handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	handleCheckApplicationField: (option: ApplicationField) => void;
@@ -22,7 +22,7 @@ type Props = {
 export const StepForm: React.FC<Props> = ({
 	step,
 	applicationData,
-	handleClick,
+	handleClickAgreement,
 	handleStepClick,
 	handleInputChange,
 	handleCheckApplicationField,
@@ -32,7 +32,7 @@ export const StepForm: React.FC<Props> = ({
 		1: (
 			<ConsentAgreementStep
 				consentAgreed={applicationData.consentAgreed}
-				handleClick={handleClick}
+				handleClickAgreement={handleClickAgreement}
 			/>
 		),
 		2: (
