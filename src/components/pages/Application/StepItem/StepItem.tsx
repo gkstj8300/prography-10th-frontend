@@ -19,7 +19,7 @@ export const StepItem: React.FC<Props> = ({ step, stepsTitle }) => {
 				const checkIndex = index + 1;
 				return (
 					<Item key={index}>
-						{checkIndex < Number(step) ? (
+						{checkIndex < Number(step) || step === 'submit' ? (
 							<MdOutlineCheckBox />
 						) : (
 							<>

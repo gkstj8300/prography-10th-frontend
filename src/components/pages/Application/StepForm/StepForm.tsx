@@ -7,6 +7,7 @@ import { ConsentAgreementStep } from '../ConsentAgreementStep';
 import { BasicInfoStep } from '../BasicInfoStep';
 import { ApplicationInfoStep } from '../ApplicationInfoStep';
 import { StepNavigation } from '../StepNavigation';
+import { SubmissionCompleteStep } from '../SubmissionCompleteStep';
 
 type Props = {
 	step: StepType;
@@ -27,52 +28,36 @@ export const StepForm: React.FC<Props> = ({
 	handleCheckApplicationField,
 	handleSubmit,
 }) => {
+	const stepComponents: Record<StepType, JSX.Element> = {
+		1: (
+			<ConsentAgreementStep
+				consentAgreed={applicationData.consentAgreed}
+				handleClick={handleClick}
+			/>
+		),
+		2: (
+			<BasicInfoStep
+				{...applicationData}
+				handleInputChange={handleInputChange}
+			/>
+		),
+		3: (
+			<ApplicationInfoStep
+				applicationField={applicationData.applicationField}
+				handleCheckApplicationField={handleCheckApplicationField}
+			/>
+		),
+		submit: <SubmissionCompleteStep />,
+	};
+
 	return (
 		<StepFormContainer>
 			<AnimatePresence mode="wait">
-				{step === 1 && (
-					<StepSection
-						key="step1"
-						initial={{ opacity: 0, x: -50 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: 50 }}
-						transition={{ duration: 0.3 }}
-					>
-						<ConsentAgreementStep
-							consentAgreed={applicationData.consentAgreed}
-							handleClick={handleClick}
-						/>
-					</StepSection>
-				)}
-				{step === 2 && (
-					<StepSection
-						key="step2"
-						initial={{ opacity: 0, x: -50 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: 50 }}
-						transition={{ duration: 0.3 }}
-					>
-						<BasicInfoStep
-							{...applicationData}
-							handleInputChange={handleInputChange}
-						/>
-					</StepSection>
-				)}
-				{step === 3 && (
-					<StepSection
-						key="step3"
-						initial={{ opacity: 0, x: -50 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: 50 }}
-						transition={{ duration: 0.3 }}
-					>
-						<ApplicationInfoStep
-							applicationField={applicationData.applicationField}
-							handleCheckApplicationField={handleCheckApplicationField}
-						/>
-					</StepSection>
+				{step in stepComponents && (
+					<AnimatedStep key={step}>{stepComponents[step]}</AnimatedStep>
 				)}
 			</AnimatePresence>
+
 			<StepNavigation
 				step={step}
 				applicationData={applicationData}
@@ -85,10 +70,15 @@ export const StepForm: React.FC<Props> = ({
 
 StepForm.displayName = 'StepForm';
 
-const StepFormContainer = styled.form`
-	display: block;
+const AnimatedStep = styled(motion.div).attrs({
+	initial: { opacity: 0, x: -50 },
+	animate: { opacity: 1, x: 0 },
+	exit: { opacity: 0, x: 50 },
+	transition: { duration: 0.3 },
+})`
+	margin-bottom: 2rem;
 `;
 
-const StepSection = styled(motion.div)`
-	margin-bottom: 2rem;
+const StepFormContainer = styled.form`
+	display: block;
 `;
