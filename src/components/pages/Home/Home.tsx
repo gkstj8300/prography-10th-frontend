@@ -167,6 +167,12 @@ const ThirdSection = styled.section`
 			color: green;
 		}
 	}
+
+	@media (max-width: 999px) {
+		li::before {
+			content: none;
+		}
+	}
 `;
 
 const FourthSection = styled.section``;
