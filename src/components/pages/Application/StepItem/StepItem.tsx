@@ -49,6 +49,11 @@ const StepContainer = styled.div`
 	padding-bottom: 2rem;
 	margin-bottom: 2rem;
 	border-bottom: 0.1rem solid;
+
+	@media (max-width: 999px) {
+		gap: 1rem;
+		font-size: 0.8rem;
+	}
 `;
 
 const Item = styled.div`

@@ -59,7 +59,6 @@ const ApplicationContainer = styled.div`
 `;
 
 const StepWrap = styled.div`
-	min-width: 480px;
 	max-width: 1000px;
 	padding: 10rem 7rem;
 
