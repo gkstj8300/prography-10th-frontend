@@ -21,13 +21,15 @@ export const useApplication = () => {
 		[]
 	);
 
-	const handleClick = useCallback((option: ConsentStatus) => {
+	// 개인정보 수집 Click 이벤트
+	const handleClickAgreement = useCallback((option: ConsentStatus) => {
 		setApplicationData(prev => ({
 			...prev,
 			consentAgreed: prev.consentAgreed === option ? null : option,
 		}));
 	}, []);
 
+	// 다음 Step Click 이벤트
 	const handleStepClick = useCallback(
 		(type: StepButtonType) => {
 			const { consentAgreed, name, email, phoneNumber } = applicationData;
@@ -51,10 +53,19 @@ export const useApplication = () => {
 		[applicationData]
 	);
 
-	// input값 입력에 따른 change
+	// 기본 정보(이름, 이메일, 전화번호) Chnage 이벤트
 	const handleInputChange = useCallback(
 		(event: ChangeEvent<HTMLInputElement>) => {
 			const { name, value } = event.target;
+
+			if (name === 'name' && /\d/.test(value)) {
+				return;
+			}
+
+			if (name === 'phoneNumber' && value.replaceAll('-', '').length > 11) {
+				return;
+			}
+
 			setApplicationData(prev => ({
 				...prev,
 				[name]: value,
@@ -63,6 +74,7 @@ export const useApplication = () => {
 		[]
 	);
 
+	// 지원 분야 Check 이벤트
 	const handleCheckApplicationField = useCallback(
 		(option: ApplicationField) => {
 			setApplicationData(prev => ({
@@ -106,7 +118,7 @@ export const useApplication = () => {
 		step,
 		stepsTitle,
 		applicationData,
-		handleClick,
+		handleClickAgreement,
 		handleStepClick,
 		handleSubmit,
 		handleInputChange,

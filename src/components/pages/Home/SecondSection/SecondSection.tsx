@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SecondSection: React.FC = () => {
-	const part = [
+	const part: string[] = [
 		'Product Owner',
 		'Design',
 		'IOS',
@@ -9,7 +9,7 @@ export const SecondSection: React.FC = () => {
 		'Frontend(React)',
 		'Backend(Spring)',
 	];
-	const partColors = [
+	const partColors: string[] = [
 		'rgb(247 27 27)',
 		'rgb(247 157 50)',
 		'rgb(208 212 52)',

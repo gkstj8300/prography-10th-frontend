@@ -8,7 +8,7 @@ export const Application: React.FC = () => {
 		step,
 		stepsTitle,
 		applicationData,
-		handleClick,
+		handleClickAgreement,
 		handleStepClick,
 		handleInputChange,
 		handleCheckApplicationField,
@@ -17,13 +17,12 @@ export const Application: React.FC = () => {
 
 	return (
 		<ApplicationContainer>
-			{/* <SideBanner /> */}
 			<StepWrap>
 				<StepItem step={step} stepsTitle={stepsTitle} />
 				<StepForm
 					step={step}
 					applicationData={applicationData}
-					handleClick={handleClick}
+					handleClickAgreement={handleClickAgreement}
 					handleStepClick={handleStepClick}
 					handleInputChange={handleInputChange}
 					handleCheckApplicationField={handleCheckApplicationField}

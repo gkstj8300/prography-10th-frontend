@@ -113,6 +113,14 @@ const Input = styled.input`
 	border: 0;
 	border-radius: 0;
 
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:active {
+		-webkit-text-fill-color: #fff;
+		-webkit-box-shadow: 0 0 0px 1000px transparent inset;
+		transition: background-color 5000s ease-in-out 0s;
+	}
+
 	&:focus {
 		outline: none;
 	}
