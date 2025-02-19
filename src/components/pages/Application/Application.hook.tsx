@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect, ChangeEvent } from 'react';
 import { useCallback } from 'react';
 import { ApplicationType } from 'src/pages/application';
 import { ConsentStatus, ApplicationField } from 'src/pages/application';
+import { addRecruiting } from 'src/api/services/addRecruiting';
 
 export type StepType = number | 'submit';
 export type StepButtonType = 'prev' | 'next';
@@ -85,14 +86,20 @@ export const useApplication = () => {
 		[]
 	);
 
-	const handleSubmit = useCallback(async (event: React.FormEvent) => {
-		event.preventDefault();
-		// 임시 api 통신을 위한 주석처리
-		// await applicationSubmit(applicationData);
-
-		// 완료 페이지 혹은 step 데이터를 통한 완료 화면 출력을 위한 submit set
-		setStep('submit');
-	}, []);
+	// 제출하기 이벤트
+	const handleSubmit = useCallback(
+		async (event: React.FormEvent) => {
+			event.preventDefault();
+			try {
+				await addRecruiting(applicationData);
+				setStep('submit');
+			} catch (error) {
+				// eslint-disable-next-line no-console
+				console.error('Recruiting error:', error);
+			}
+		},
+		[applicationData, setStep]
+	);
 
 	// 휴대폰 번호 하이픈 자동완성
 	useEffect(() => {
