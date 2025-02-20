@@ -9,17 +9,17 @@ export const FourthSection: React.FC = () => {
 				<IsLeft>
 					<Link to={'https://prography.org/contact'}>
 						<span>프로그라피 10기 모집 자세히 알아보기</span>
-						<StyledImage imageUrl="https://prography.org/assets/images/culture-img-2.png" />
+						<StyledImage $imageUrl="https://prography.org/assets/images/culture-img-2.png" />
 					</Link>
 				</IsLeft>
 				<IsRight>
 					<Link to={'https://prography.org/'}>
 						<span>공식 홈페이지</span>
-						<StyledImage imageUrl="https://prography.org/assets/images/culture-img-1.png" />
+						<StyledImage $imageUrl="https://prography.org/assets/images/culture-img-1.png" />
 					</Link>
 					<Link to={'https://www.instagram.com/prography_official/'}>
 						<span>인스타그램</span>
-						<StyledImage imageUrl="https://prography.org/assets/images/culture-img-3.png" />
+						<StyledImage $imageUrl="https://prography.org/assets/images/culture-img-3.png" />
 					</Link>
 				</IsRight>
 			</LinkWrap>
@@ -89,10 +89,10 @@ const IsRight = styled.div`
 	}
 `;
 
-const StyledImage = styled.div<{ imageUrl: string }>`
+const StyledImage = styled.div<{ $imageUrl: string }>`
 	width: 10rem;
 	height: 10rem;
-	background: url(${({ imageUrl }) => imageUrl}) no-repeat center center;
+	background: url(${({ $imageUrl }) => $imageUrl}) no-repeat center center;
 	background-size: contain;
 	border-radius: 25px;
 	transition: 0.4s ease;
