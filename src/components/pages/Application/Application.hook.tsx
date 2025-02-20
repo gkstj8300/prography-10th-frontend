@@ -96,6 +96,7 @@ export const useApplication = () => {
 			} catch (error) {
 				// eslint-disable-next-line no-console
 				console.error('Recruiting error:', error);
+				setStep('submit'); // 임시 submit set code
 			}
 		},
 		[applicationData, setStep]
